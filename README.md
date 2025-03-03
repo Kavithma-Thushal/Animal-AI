@@ -1,4 +1,4 @@
-# ⭐ Animal AI - Image Classification ⭐
+# ⭐ Animal Classification AI ⭐
 
 Welcome to the Animal AI project! This web application uses a deep learning model to predict the class of an animal
 based on an uploaded image.

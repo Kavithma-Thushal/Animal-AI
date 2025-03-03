@@ -1,7 +1,0 @@
-Flask
-tensorflow
-numpy
-opencv-python
-matplotlib
-bootstrap-flask
-werkzeug
