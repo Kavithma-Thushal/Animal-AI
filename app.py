@@ -2,10 +2,9 @@ import os
 import numpy as np
 import tensorflow as tf
 import cv2
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from werkzeug.utils import secure_filename
 
-# Initialize Flask app
 app = Flask(__name__)
 
 # Configure upload folder
@@ -20,19 +19,19 @@ if not os.path.exists(MODEL_PATH):
 
 model = tf.keras.models.load_model(MODEL_PATH)
 
-# Define class names (based on your dataset)
+# Define class names
 class_names = ['butterfly', 'cat', 'chicken', 'cow', 'dog', 'elephant',
                'horse', 'sheep', 'spider', 'squirrel']
 
 
 # Image preprocessing function
 def preprocess_image(img_path):
-    IMG_SIZE = (64, 64)  # Model input size
+    IMG_SIZE = (64, 64)
     img = cv2.imread(img_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = cv2.resize(img, IMG_SIZE)
-    img = img / 255.0  # Normalize
-    img = np.expand_dims(img, axis=0)  # Add batch dimension
+    img = img / 255.0
+    img = np.expand_dims(img, axis=0)
     return img
 
 
@@ -66,4 +65,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=80, debug=True)

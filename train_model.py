@@ -13,7 +13,7 @@ BATCH_SIZE = 32
 
 train_datagen = ImageDataGenerator(
     rescale=1.0 / 255,
-    validation_split=0.2  # 20% for validation
+    validation_split=0.2
 )
 
 train_generator = train_datagen.flow_from_directory(
@@ -34,7 +34,7 @@ val_generator = train_datagen.flow_from_directory(
 
 # Step 3: Build the CNN Model
 model = tf.keras.models.Sequential([
-    tf.keras.layers.Input(shape=(64, 64, 3)),  # Changed to Input layer
+    tf.keras.layers.Input(shape=(64, 64, 3)),
     tf.keras.layers.Conv2D(32, (3, 3), activation="relu"),
     tf.keras.layers.MaxPooling2D(2, 2),
 
@@ -46,7 +46,7 @@ model = tf.keras.models.Sequential([
 
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(128, activation="relu"),
-    tf.keras.layers.Dense(10, activation="softmax")  # 10 classes
+    tf.keras.layers.Dense(10, activation="softmax")
 ])
 
 # Step 4: Compile the Model

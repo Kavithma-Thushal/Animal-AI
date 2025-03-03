@@ -9,9 +9,10 @@
 
 <body>
 <div class="container text-center mt-5">
-    <h1 class="mb-4">Animal AI</h1>
 
-    <!-- Form to upload image -->
+    <h1 class="mb-4">Animal Classification AI</h1>
+
+    <!-- Upload Image -->
     <form action="/" method="post" enctype="multipart/form-data" class="card p-4 shadow-lg mx-auto"
           style="max-width: 600px;">
         <div class="mb-4">
@@ -23,14 +24,14 @@
     </form>
 
     {% if filename and prediction %}
-    <!-- Prediction Result -->
-    <div class="card p-4 pt-5 shadow-lg mx-auto mt-5" style="max-width: 400px;">
-        <div class="d-flex justify-content-center align-items-center">
-            <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="img-fluid rounded"
-                 style="max-width: 300px;" alt="Uploaded Image">
+        <!-- Prediction Result -->
+        <div class="card p-4 pt-5 shadow-lg mx-auto mt-5" style="max-width: 400px;">
+            <div class="d-flex justify-content-center align-items-center">
+                <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="img-fluid rounded"
+                     style="max-width: 300px;" alt="Uploaded Image">
+            </div>
+            <h3 class="mt-3">Predicted Class: <span class="text-success">{{ prediction }}</span></h3>
         </div>
-        <h3 class="mt-3">Predicted Class: <span class="text-success">{{ prediction }}</span></h3>
-    </div>
     {% endif %}
 </div>
 
